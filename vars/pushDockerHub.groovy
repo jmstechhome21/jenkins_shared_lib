@@ -9,6 +9,16 @@ pipeline {
     dockerImage = ''
   }
   stages {
+     stage('get scm') {
+      steps {
+	       git credentialsId: 'github_credentials', url: 'https://github.com/jmstechhome21/${projectName}'
+       }
+    }
+	   stage('mavenbuild'){
+	   steps{
+	    sh 'mvn package'
+	   }
+	   }
     stage('Building image') {
       steps{
         script {
