@@ -11,7 +11,7 @@ pipeline {
   stages {
    stage('get scm') {
       steps {
-          git credentialsId: 'github_credentials', url: 'https://github.com/jmstechhome21/${projectName}'
+          git credentialsId: 'github_credentials', url: 'https://github.com/jmstechhome21/${projectName}.git'
        }
    }
    stage('mavenbuild'){
