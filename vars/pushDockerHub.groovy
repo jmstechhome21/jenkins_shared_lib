@@ -13,10 +13,11 @@ pipeline {
       steps {
           git credentialsId: 'github_credentials', url: 'https://github.com/jmstechhome21/${projectName}'
        }
-    	stage('mavenbuild'){
+   }
+   stage('mavenbuild'){
 	   steps{
 	    sh 'mvn package'
-	   }
+	    }
 	   }
     stage('Building image') {
       steps{
@@ -40,6 +41,5 @@ pipeline {
       }
     }
   }
-}
 }
 }
