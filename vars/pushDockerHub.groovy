@@ -4,16 +4,12 @@ def projectName = pipelineParams.ecrRepoName
 pipeline {
  agent any
   environment {
-    registry = "ybmsr/${projectName}"
+    registry = "ybmsr/$projectName"
     registryCredential = 'dockerhub_credentials'
     dockerImage = ''
   }
   stages {
-   stage('get scm') {
-      steps {
-          git credentialsId: 'github_credentials', url: 'https://github.com/jmstechhome21/${projectName}.git'
-       }
-   }
+
    stage('mavenbuild'){
 	   steps{
 	    sh 'mvn package'
